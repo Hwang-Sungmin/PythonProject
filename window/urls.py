@@ -4,5 +4,5 @@ app_name = "window"
 
 urlpatterns = [
     path('window/', window_views.menu, name = "menu"),   
-    path('show/', window_views.show, name='show')
+    path('show/', window_views.show, name='show'),
 ]

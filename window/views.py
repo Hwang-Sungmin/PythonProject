@@ -33,9 +33,8 @@ context = {
             'C언어':'',
         }
     }
-
 def menu(request):
     return render(request, 'window/index.html', context)
 
-def show(request):
-    return render(request, 'window/index.html', context)
+def show(request):        
+    return render(request, 'window/java.html', context)

@@ -338,5 +338,26 @@
   <!-- Main Script -->
   <script src="{% static 'js/script.js' %}"></script>
 
+
+  <script>
+    $(function () {
+      $('.gogo').on('click', function(){
+        var data = $(this).data('title');
+          $.ajax({
+            url : "{% url 'window:show' %}",
+            method : 'GET',
+
+
+
+            success : function(data){
+              alert("성공");
+            },
+            error : function(data){
+              alert("실패");
+            }
+        });  //end ajax
+      })
+    }) //end function
+  </script>
 </body>
 </html>
