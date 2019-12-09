@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('itess/', include('itess.urls')),
     path('window/', include('window.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
+
 # url을 만들어주겠다.
 #urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -1,7 +1,10 @@
 from django.db import models
+from django.conf import settings
+from django.contrib.auth.models import User
 from imagekit.models import ImageSpecField,ProcessedImageField
 from imagekit.processors import ResizeToFill, Thumbnail
 import re
+
 # Create your models here.
 
 class Topic(models.Model):
@@ -13,14 +16,19 @@ class Information(models.Model):
     academy = models.CharField(max_length=300)
     info = models.CharField(max_length=300)
 
+    academy_title= models.CharField(max_length=300)
+    academy_num = models.CharField(max_length=300)
     training_date = models.CharField(max_length= 300)
     pay = models.CharField(max_length= 300)
-    wage = models.CharField(max_length= 300)
+    training_wage = models.CharField(max_length= 300)
     people = models.CharField(max_length= 300)
     training_time = models.CharField(max_length= 300)
     
     code = models.CharField(max_length=100)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='courses')
+
+class imgdata(models.Model):
+     image_url = models.CharField(max_length=300)
 
 def get_data(*keywords):
     import requests
@@ -37,27 +45,34 @@ def get_data(*keywords):
             })
             data = BeautifulSoup(res.text, 'html.parser')
             if data.select('p[class=name]'):# 값이 있으면 
-                for title in data.select('p[class=name]'):
-                    Information.objects.create(
-                        title=title.text.strip(),
-                        topic = topic
-                    )  
-                for academy in data.select('dl[class=academy]'):
-                    Information.objects.create(
-                        academy=academy.text.strip(),
-                        topic = topic
-                    )  
-                for info in data.select('ul[class=info]'):
-                    Information.objects.create(
-                        info=info.text.strip(),
-                        topic = topic
-                    )  #searchForm1 > div > div > ul > li:nth-child(2) > div.cont > ul:nth-child(3) > li:nth-child(1)
-                for training_date in data.select("#searchForm1 > div > div > ul > li:nth-child(2) > div.cont > ul:nth-child(3) > li:nth-child(1)") :
-                    Information.objects.create(          
-                        training_date=training_date.text.strip(),             
-                        topic = topic
-                    )  
+                titles = data.select('p[class=name]')
+                academys = data.select('dl[class= academy]')
+                infos = data.select('ul[class=info]')
 
+
+                academy_titles = data.select("dl.academy >dt:nth-child(1)")
+                academy_nums = data.select("dl.academy > dd")
+                training_datas = data.select("ul[class = info] > li:nth-child(1)")
+                pays = data.select("ul[class = info] > li:nth-child(3)")
+                training_wages = data.select("ul[class = info] > li:nth-child(4)")
+                peoples = data.select("ul[class = info] > li:nth-child(5)")
+                training_times = data.select("ul.info.detail>li:nth-child(1)")
+                
+                for i in range(len(titles)):
+                    Information.objects.create(
+                        title= titles[i].text.strip(),
+                        academy= academys[i].text.strip(),
+                        info = infos[i].text.strip(),
+
+                        academy_title = academy_titles[i].text.strip(),
+                        academy_num = academy_nums[i].text.strip(),
+                        training_date = training_datas[i].text.strip(),
+                        pay = pays[i].text.strip(),
+                    #    training_wage = training_wages[i].text.strip(),
+                        people = peoples[i].text.strip(),
+                        training_time = training_times[i].text.strip(),
+                        topic = topic,
+                    ) 
                 
             else:
                 break
