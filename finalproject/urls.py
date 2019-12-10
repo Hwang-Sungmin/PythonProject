@@ -24,6 +24,7 @@ urlpatterns = [
     path('itess/', include('itess.urls')),
     path('window/', include('window.urls')),
     path('accounts/', include('accounts.urls')),
+    
 ]
 
 # url을 만들어주겠다.

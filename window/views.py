@@ -36,5 +36,10 @@ context = {
 def menu(request):
     return render(request, 'window/index.html', context)
 
-def show(request):        
-    return render(request, 'window/java.html', context)
+def about(request):
+    return render(request, 'window/about.html', context)    
+
+def show(request, topic_title):        
+    if( topic_title == "자바" ):
+        return render(request, 'window/java.html', context)
+         
