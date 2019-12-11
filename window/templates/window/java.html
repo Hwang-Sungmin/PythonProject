@@ -7,6 +7,10 @@
   .navigation{
     background-color: gray;
   }
+  .card-body{
+    width: 300px;
+    height: 300px;
+  }
  
 </style>
   <meta charset="utf-8">
@@ -200,9 +204,9 @@
         <div class="col-lg-4 col-sm-6 mb-5 item">
         <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}">
           <div class="card p-0 border-primary rounded-0 hover-shadow">
-            <!--텀블러 이미지
+            <!--텀블 러 이미지
               <img class="card-img-top rounded-0" src= "{% static 'images/courses/course-1.jpg' %}" alt="course thumb">-->
-            <div class="card-body">
+            <div class="card-body" >
               <h5 class="card-title text-primary">{{ info.academy_title }}
               <a href = "{{info.link}}" target="_blank" class="btn btn-primary btn-sm gogo" >detail</a></h5>
                 <ul class="list-inline mb-2">           
