@@ -4,7 +4,9 @@ app_name = "window"
 
 urlpatterns = [
     path('window/', window_views.menu, name = "menu"),
-    path('window/about', window_views.about, name = "about"),
+    path('window/about/', window_views.about, name = "about"),
    
     path('show/<str:topic_title>/', window_views.show, name='show'),
+    #path('link/', window_views.link, name='link'),
+   
 ]

@@ -7,6 +7,7 @@
   .navigation{
     background-color: gray;
   }
+ 
 </style>
   <meta charset="utf-8">
   <title>Educenter</title>
@@ -55,7 +56,7 @@
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto text-center">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="{% url 'window:menu'%}">Home</a>
               </li>
               <li class="nav-item @@about">
                 <a class="nav-link" href="{% url 'window:about'%}">About</a>
@@ -162,7 +163,7 @@
               <input type="password" class="form-control mb-3" id="loginPassword" name="loginPassword"
                 placeholder="Password">
             </div>
-            <div class="col-12">
+            <div class="col-12in">
               <button type="submit" class="btn btn-primary">LOGIN</button>
             </div>
           </form>
@@ -178,7 +179,6 @@
   <br>
   <!-- courses -->
   <section class="section-sm">
- 
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -193,22 +193,26 @@
       </div>
       <!-- course list -->
       <div class="row justify-content-center">
+      
         <!-- course item -->
         {% for topic in java %}
         {% for info in topic.courses.all %}
         <div class="col-lg-4 col-sm-6 mb-5 item">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}">
           <div class="card p-0 border-primary rounded-0 hover-shadow">
-            <img class="card-img-top rounded-0" src= "{% static 'images/courses/course-1.jpg' %}" alt="course thumb">
+            <!--텀블러 이미지
+              <img class="card-img-top rounded-0" src= "{% static 'images/courses/course-1.jpg' %}" alt="course thumb">-->
             <div class="card-body">
-                <h5 class="card-title text-primary">{{ info.academy_title }}</h5>
+              <h5 class="card-title text-primary">{{ info.academy_title }}
+              <a href = "{{info.link}}" target="_blank" class="btn btn-primary btn-sm gogo" >detail</a></h5>
                 <ul class="list-inline mb-2">           
                     <li class="list-inline-item">{{ info.title }}</li>
                     <li class="list-inline-item">{{ info.training_date }}</li>
                     <li class="list-inline-item">{{ info.training_time }}</li>
                 </ul>   
-                좋아요 구현?
+                <!--좋아요 구현? 귀찬
                 <button class="btn btn-primary btn-sm gogo">좋아</button>
-                <button class="btn btn-primary btn-sm gogo">싫어</button>
+                <button class="btn btn-primary btn-sm gogo">싫어</button>-->
             </div>
           </div>
         </div>
@@ -276,10 +280,10 @@
   <script src="{% static 'js/script.js' %}"></script>
 
   <!--Function 구현 -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-
+   
 </body>
 </html>

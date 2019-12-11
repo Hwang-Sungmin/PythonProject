@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from itess.models import Topic, Information
 from django.contrib.auth.models import User
 import requests , re
@@ -42,4 +43,16 @@ def about(request):
 def show(request, topic_title):        
     if( topic_title == "자바" ):
         return render(request, 'window/java.html', context)
-         
+
+#def link(request):
+#    if request.method == "POST":
+#        data = request.POST["link_address"]
+#        print(data)
+#        return HttpResponse(data)
+          
+    #print(request)
+    #if request.method == "POST":
+    #    data = request.POST["link_address"]
+        # print(data.split('?'))
+        # return HttpResponse(data.split('?')[1])
+     
