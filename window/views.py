@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from itess.models import Topic, Information
+from accounts.models import Comment
 from django.contrib.auth.models import User
 import requests , re
 # Create your views here.
@@ -43,6 +44,15 @@ def about(request):
 def show(request, topic_title):        
     if( topic_title == "자바" ):
         return render(request, 'window/java.html', context)
+
+# 여기다가 댓글 달기 구현
+def comment(request, topic_title):
+    
+    
+    return render(request, 'window/index.html', context) 
+
+
+
 
 #def link(request):
 #    if request.method == "POST":

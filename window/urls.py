@@ -9,4 +9,6 @@ urlpatterns = [
     path('show/<str:topic_title>/', window_views.show, name='show'),
     #path('link/', window_views.link, name='link'),
    
+    # commnet path
+    path('show/<str:topic_title>/comment/', window_views.comment , name='comment'),
 ]
