@@ -46,7 +46,7 @@
     <div class="navigation w-100" >
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light p-0">
-          <a class="navbar-brand" href="index.html"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+          <a class="navbar-brand" href="{% url 'window:menu'%}"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
           <button class="navbar-toggler rounded-0" type="button" data-toggle="collapse" data-target="#navigation"
             aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -72,12 +72,12 @@
               <li class="nav-item dropdown view">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
-                  Pages
+                  지역별
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="teacher.html">Teacher</a>
-                  <a class="dropdown-item" href="teacher-single.html">Teacher Single</a>
-                  <a class="dropdown-item" href="notice.html">Notice</a>
+                  <a class="dropdown-item" href="{% url 'window:incheon' %}">인천</a>
+                  <a class="dropdown-item" href="{% url 'window:seoul' %}">서울</a>
+                  <a class="dropdown-item" href="notice.html">부산</a>
                   <a class="dropdown-item" href="notice-single.html">Notice Details</a>
                   <a class="dropdown-item" href="research.html">Research</a>
                   <a class="dropdown-item" href="scholarship.html">Scholarship</a>
@@ -174,17 +174,18 @@
   <br>
   <br>
   <br>
+  <br>
+  <br>
   <!-- courses -->
   <section class="section-sm">
- 
     <div class="container">
       <div class="row">
         <div class="col-12">
           <div class="d-flex align-items-center section-title justify-content-between">
-            <h2 class="mb-0 text-nowrap mr-3">수강 목록</h2>
+            <h2 class="mb-0 text-nowrap mr-3">수강 목록</h2><br><br><br>
             <div class="border-top w-100 border-primary d-none d-sm-block"></div>
             <div>
-              <a href="courses.html" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">see all</a>
+              <a href="courses.html" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block"></a>
             </div>
           </div>
         </div>
@@ -197,18 +198,27 @@
         <div class="col-lg-4 col-sm-6 mb-5 item">
           <div class="card p-0 border-primary rounded-0 hover-shadow">
             {% if topic.title == '자바' %}
-            <img class="card-img-top rounded-0" src= "{% static 'images/courses/java.jpg' %}" width="300" height="300" alt="course thumb">
-            
-            {% else %}
-            <img class="card-img-top rounded-0" src= "{% static 'images/courses/big.jpg' %}"  width="300" height="300" alt="course thumb">
-           
+              <img class="card-img-top rounded-0" src= "{% static 'images/courses/java.jpg' %}" width="300" height="300" alt="course thumb">
+            {% elif topic.title == '클라우드' %}
+              <img class="card-img-top rounded-0" src= "{% static 'images/courses/cloud.jpg' %}" width="300" height="300" alt="course thumb">       
+            {% elif topic.title == '빅데이터' %}
+              <img class="card-img-top rounded-0" src= "{% static 'images/courses/big.jpg' %}" width="300" height="300" alt="course thumb">
+            {% elif topic.title == 'Iot' %}
+              <img class="card-img-top rounded-0" src= "{% static 'images/courses/IOT.jpg' %}" width="300" height="300" alt="course thumb">
+            {% elif topic.title == 'Ai' %}
+              <img class="card-img-top rounded-0" src= "{% static 'images/courses/AI.jpg' %}" width="300" height="300" alt="course thumb">
+            {% elif topic.title == 'Vr' %}
+              <img class="card-img-top rounded-0" src= "{% static 'images/courses/VR.jpg' %}" width="300" height="300" alt="course thumb">
+            {% elif topic.title == 'C언어' %}
+              <img class="card-img-top rounded-0" src= "{% static 'images/courses/C.jpg' %}" width="300" height="300" alt="course thumb">
+            {% elif topic.title == '파이썬' %}
+              <img class="card-img-top rounded-0" src= "{% static 'images/courses/python.jpg' %}"  width="300" height="300" alt="course thumb">
             {% endif %}
             <div class="card-body">
               <ul class="list-inline mb-2">
-                <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>위치   /</li>
+                <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i></li>
                 <li class="list-inline-item">{{ topic.title }}</i></li>
               </ul>
-              
               <a href="{% url 'window:show' topic.title %}">
                 <button class="btn btn-primary btn-sm gogo" data-title="{{ topic.title }}">바로 가기</button>
               </a>
@@ -240,7 +250,7 @@
                 var CurrentYear = new Date().getFullYear()
                 document.write(CurrentYear)
               </script>
-              © Theme By <a href="https://themefisher.com">themefisher.com</a></p> . All Rights Reserved.
+              © Theme By <a href="#"></a></p> . All Rights Reserved.
           </div>
           <div class="col-sm-5 text-sm-right text-center">
             <ul class="list-inline">
@@ -281,7 +291,6 @@
   <script>
  
   </script>
-
 
 </body>
 </html>

@@ -68,7 +68,7 @@ def get_data(*keywords):
                         info = infos[i].text.strip(),
                         link = f'https://hrd.go.kr/hrdp/co/pcobo/PCOBO0100P.do?tracseId={link_code1}&tracseTme={link_code2}&crseTracseSe=C0061&trainstCstmrId={link_code3}#undefined',
                         academy_title = academy_titles[i].text.strip(),
-                        academy_num = academy_nums[i].text.strip(),
+                        academy_num = academy_nums[i].text.split()[1],
                         training_date = training_datas[i].text.strip(),
                         pay = pays[i].text.strip(),
                     #   training_wage = training_wages[i].text.strip(),

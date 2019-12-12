@@ -183,6 +183,9 @@
 
   <br>
   <br>
+ <br>
+ <br>
+ <br>
  
   <!-- courses -->
   <section class="section-sm">
@@ -190,10 +193,10 @@
       <div class="row">
         <div class="col-12">
           <div class="d-flex align-items-center section-title justify-content-between">
-            <h2 class="mb-0 text-nowrap mr-3">수강 목록</h2>
+            <h2 class="mb-0 text-nowrap mr-3">자바<br><br></h2>
             <div class="border-top w-100 border-primary d-none d-sm-block"></div>
             <div>
-              <a href="courses.html" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">see all</a>
+              <a href="courses.html" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block"></a>
             </div>
           </div>
         </div>
@@ -202,6 +205,7 @@
       <div class="row justify-content-center">
       
         <!-- course item -->
+        
       {% for topic in java %}
       {% for info in topic.courses.all %}
       <div class="col-lg-4 col-sm-6 mb-5 item">
@@ -210,8 +214,9 @@
             <!--텀블 러 이미지
             <img class="card-img-top rounded-0" src= "{% static 'images/courses/course-1.jpg' %}" alt="course thumb">-->
             <div class="card-body" >
+              <a href = "{{info.link}}" target="_blank">
               <h5 class="card-title text-primary">{{ info.academy_title }}
-              <a href = "{{info.link}}" target="_blank" class="btn btn-primary btn-sm gogo" >detail</a></h5>
+              </a></h5>
                 <ul class="list-inline mb-2">           
                   <li class="list-inline-item">{{ info.title }}</li>
                   <li class="list-inline-item">{{ info.training_date }}</li>
@@ -237,8 +242,8 @@
                 </li>    
               </ul>
             </div>
+          </div>
         </div>
-      </div>
       {% endfor %}
       {% endfor %}
           
